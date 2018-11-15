@@ -37,30 +37,39 @@ module CF_Game
 		g.clearcolumns
 		g.setplayer1
 		g.setplayer2
+		finished = false
+		playing = true
+		@winner = ""
 
 		g.start
 		@output.puts("")
 
-		ongoingGame = true
 		while playing == true
 
 			g.displaymenu
 			@output.puts("Please enter your choice:")
+			input = ""
 			input = g.getinput
 
 			system "cls"
 
 			if input == "1"
 
-				@output.print(@matrix)
+				if @winner != ""
 
-				g.displaybegingame
-				@output.puts("")
+					g.displaywinner(@winner)
+					@output.print("If you would like to play again then create a new game by entering 2.")
 
-				finished = false
+				elsif turn == 0
+
+					g.displaybegingame
+					@output.puts("")
+
+				end
+
 				while finished == false
 
-					g.displayemptyframe
+					g.displayframe
 					@output.puts("")
 
 					if turn%2 == 0
@@ -82,19 +91,33 @@ module CF_Game
 
 					elsif input.to_i >=1 and input.to_i <=7
 
-						g.gravityChecker(input.to_i, playerToken)
+						occupied = g.gravityChecker(input.to_i, playerToken)
+						if occupied == true
 
-						g.checkwinner
+							system "cls"
 
-						turn += 1
+							@output.puts("This column is fill please select a different column.")
+							@output.puts("")
 
-						system "cls"
+						elsif @winner != ""
+
+							g.displaywinner(@winner)
+							finished = true
+
+						else
+
+							turn += 1
+
+						#	system "cls"
+
+						end
 
 					else
 
 						system "cls"
 
 						g.displayinvalidinputerror
+						@output.puts("")
 
 					end
 
@@ -103,6 +126,7 @@ module CF_Game
 			elsif input == "2"
 
 				g.clearcolumns
+				finished = false
 				turn = 0
 				winner = ""
 
