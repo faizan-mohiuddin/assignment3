@@ -39,7 +39,6 @@ module CF_Game
 		g.setplayer2
 		finished = false
 		playing = true
-		@winner = ""
 
 		g.start
 		@output.puts("")
@@ -47,7 +46,7 @@ module CF_Game
 		while playing == true
 
 			g.displaymenu
-			@output.puts("Please enter your choice:")
+			@output.print("Please enter your choice: ")
 			input = ""
 			input = g.getinput
 
@@ -55,10 +54,12 @@ module CF_Game
 
 			if input == "1"
 
-				if @winner != ""
+				if g.winner == "1" || g.winner == "2"
 
-					g.displaywinner(@winner)
-					@output.print("If you would like to play again then create a new game by entering 2.")
+					g.displaywinner(g.winner)
+					@output.puts("")
+					@output.puts("If you would like to play again then create a new game by entering 2.")
+					@output.puts("")
 
 				elsif turn == 0
 
@@ -99,16 +100,19 @@ module CF_Game
 							@output.puts("This column is fill please select a different column.")
 							@output.puts("")
 
-						elsif @winner != ""
+						elsif g.winner == "1" || g.winner == "2"
 
-							g.displaywinner(@winner)
+							system "cls"
+
+							g.displaywinner(g.winner)
+							@output.puts("")
 							finished = true
 
 						else
 
 							turn += 1
 
-						#	system "cls"
+							system "cls"
 
 						end
 
@@ -116,6 +120,7 @@ module CF_Game
 
 						system "cls"
 
+						@output.puts("")
 						g.displayinvalidinputerror
 						@output.puts("")
 
@@ -128,12 +133,13 @@ module CF_Game
 				g.clearcolumns
 				finished = false
 				turn = 0
-				winner = ""
+				g.winner = ""
 
 				system "cls"
 
 				g.displaynewgamecreated
 				@output.puts("Enter 1 in order to Start the game.")
+				@output.puts("")
 
 			elsif input == "9"
 
