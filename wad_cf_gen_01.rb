@@ -42,7 +42,7 @@ module CF_Game
 		end
 
 		def student_id										#Returns the student id.
-			51880363
+			"51880363 & 51874279"
 		end
 
 		def displaybegingame									#Output "Begin game." to the display.
