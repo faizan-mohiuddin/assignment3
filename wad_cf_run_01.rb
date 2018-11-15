@@ -169,8 +169,13 @@ end
 
 	# Any code added to output the activity messages to a browser should be added below.
 
+get '/' do
+    erb :howtoplay
+end
 
-
+get '/play' do
+    erb :play
+end
 	# Any code added to output the activity messages to a browser should be added above.
 
 # End program
