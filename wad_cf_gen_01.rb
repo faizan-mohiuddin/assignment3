@@ -144,15 +144,12 @@ module CF_Game
 
 				if @matrix[row][column] == "_"
 					setmatrixcolumnvalue(row, column, playerToken)
-					position = [row, column]
-					return position
-					occupied = false
 					checkwinner(row, column, playerToken)
+					occupied = false
 				elsif row >= 1
 					row -= 1
 				else
 					return occupied
-					break
 				end
 
 			end
@@ -162,59 +159,97 @@ module CF_Game
 		def checkwinner(row, column, playerToken)									#Checks for which player wins.
 
 			winnerFound = false
-			index = 1
+			@winner = ""
 			count = 1
 
+			#Start horizontal.
 			#Checks left.
+			leftColumn = column - 1
 			while winnerFound == false
 
-				leftColumn = column - index
 				if leftColumn >= 0 && @matrix[row][leftColumn] == playerToken
 
 					count += 1
-					index -= 1
-					@output.puts(count)
+					leftColumn -= 1
 
 					if count == 4
 						winnerFound = true
 					end
 				else
-					index = 1
 					break
 				end
 
 			end
 
+			#Checks right.
+			rightColumn = column + 1
 			while winnerFound == false
 
-				rightColumn = column + index
+
 				if rightColumn <= 6 && @matrix[row][rightColumn] == playerToken
 
 					count += 1
-					index += 1
+					rightColumn += 1
 
 					if count == 4
-
 						winnerFound = true
-
 					end
-
 				else
-
-					index = 1
 					break
-
 				end
 
 			end
+			#End horizontal.
+
+			count = 1
+
+			#Start vertical.
+			#Checks up.
+			upRow = row - 1
+			while winnerFound == false
+
+				if upRow >= 0 && @matrix[upRow][column] == playerToken
+
+					count += 1
+					upRow -= 1
+
+					if count == 4
+						winnerFound = true
+					end
+				else
+					break
+				end
+
+			end
+
+			#Checks down.
+			downRow = row + 1
+			while winnerFound == false
+
+				if downRow <= 5 && @matrix[downRow][column] == playerToken
+
+					count += 1
+					downRow += 1
+
+					if count == 4
+						winnerFound = true
+					end
+				else
+					break
+				end
+
+			end
+			#End Vertical.
 
 			if winnerFound == true
 				if playerToken == "O"
 					@winner = "1"
-				elsif plauerToken == "X"
+				elsif playerToken == "X"
 					@winner = "2"
 				end
 			end
+
+			return @winner
 
 		end
 
