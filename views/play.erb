@@ -4,31 +4,37 @@
 </head>
 
 <style>
-.body-container {
-    padding-left: 22%!important;
-    background-color: #FFFFFF;
-}
-</style>
+    .body-container {
+        padding-left: 22%!important;
+        background-color: #FFFFFF;
+    }
 
+    td{
+        background-color:#d9d9d9;
+        height:20px;
+        width:20px;
+        padding:30px;
+        border: 6px solid white;
+    }
+    .spacer h1{
+        visibility:hidden;
+    }
+
+</style>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <a class="navbar-brand" href="howtoplay.html">Connect4</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">How to Play <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/play">Play</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">How to Play <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/play">Play</a>
+            </li>
+        </ul>
 
     </nav>
 
@@ -37,61 +43,84 @@
         <p>Play the browser-based Connect4 game.</p>
     </div>
 
-<div class = "body-container">
-    <div class = "container">
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
+<center>
+    <table>
+        <tr> <!-- table row 0 (for buttons) -->
+            <th><center><button type = "button" class = "btn btn-info btn-lg">1</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">2</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">3</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">4</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">5</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">6</button></center></th>
+            <th><center><button type = "button" class = "btn btn-info btn-lg">7</button></center></th>
+        </tr>
+        <form>
+            <tr> <!-- table row 1 -->
+                <td name = "col1cell1"></td>
+                <td name = "col2cell1"></td>
+                <td name = "col3cell1"></td>
+                <td name = "col4cell1"></td>
+                <td name = "col5cell1"></td>
+                <td name = "col6cell1"></td>
+                <td name = "col7cell1"></td>
+            </tr>
+            <tr> <!-- table row 2 -->
+                <td name = "col1cell2"></td>
+                <td name = "col2cell2"></td>
+                <td name = "col3cell2"></td>
+                <td name = "col4cell2"></td>
+                <td name = "col5cell2"></td>
+                <td name = "col6cell2"></td>
+                <td name = "col7cell2"></td>
+            </tr>
+            <tr> <!-- table row 3 -->
+                <td name = "col1cell3"></td>
+                <td name = "col2cell3"></td>
+                <td name = "col3cell3"></td>
+                <td name = "col4cell3"></td>
+                <td name = "col5cell3"></td>
+                <td name = "col6cell3"></td>
+                <td name = "col7cell3"></td>
+            </tr>
+            <tr> <!-- table row 4 -->
+                <td name = "col1cell4"></td>
+                <td name = "col2cell4"></td>
+                <td name = "col3cell4"></td>
+                <td name = "col4cell4"></td>
+                <td name = "col5cell4"></td>
+                <td name = "col6cell4"></td>
+                <td name = "col7cell4"></td>
+            </tr>
+            <tr> <!-- table row 5 -->
+                <td name = "col1cell5"></td>
+                <td name = "col2cell5"></td>
+                <td name = "col3cell5"></td>
+                <td name = "col4cell5"></td>
+                <td name = "col5cell5"></td>
+                <td name = "col6cell5"></td>
+                <td name = "col7cell5"></td>
+            </tr>
+            <tr> <!-- table row 6 -->
+                <td name = "col1cell6"></td>
+                <td name = "col2cell6"></td>
+                <td name = "col3cell6"></td>
+                <td name = "col4cell6"></td>
+                <td name = "col5cell6"></td>
+                <td name = "col6cell6"></td>
+                <td name = "col7cell6"></td>
+            </tr>
+        </form>
+    </table>
+
+    <!-- <button type = "button" class = "btn btn-success">Begin Game</button> uncomment if you need the begin game button -->
+    <button type = "button" class = "btn btn-info">New Game</button>
+
+
+    <p>It is <b>Player X's</b> turn.</p>
+
+    <div class = "spacer"><!-- spacer -->
+        <h1>invisible spacer</h1>
     </div>
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-        <div class="col-md-1"><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="grey" stroke-width="3" fill="#eee"/></svg></div>
-    </div>
-    </div>
-</div>
+
+</center>
+
