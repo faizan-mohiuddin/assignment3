@@ -39,6 +39,7 @@ module CF_Game
 		g.setplayer2
 		finished = false
 		playing = true
+		turn = 0
 
 		g.start
 		@output.puts("")
@@ -66,17 +67,20 @@ module CF_Game
 					g.displaybegingame
 					@output.puts("")
 
-				elsif turn == 42
+				end
+
+				while finished == false
+
+				if turn == 42
 
 					@output.puts("The match has ended in a draw.")
 					@output.puts("")
 					@output.puts("If you would like to play again then create a new game by entering 2.")
 					@output.puts("")
 					finished = true
+					break
 
 				end
-
-				while finished == false
 
 					g.displayframe
 					@output.puts("")
@@ -119,6 +123,7 @@ module CF_Game
 						else
 
 							turn += 1
+							@output.print(turn)
 
 							system "cls"
 
@@ -179,13 +184,10 @@ end
 
 	h = CF_Game::Game.new(STDIN, STDOUT)
 
-	h.clearcolumns
 	$currentPlayer = h.setplayer1
 	$waitingPlayer = h.setplayer2
-	player1Color = "red"
-	player2Color = "blue"
 	$turn = 0
-
+	$matrix = h.clearcolumns
 	get '/' do
 
 		erb :howtoplay
@@ -201,14 +203,11 @@ end
 		@occupied = $occupied
 		@turn = $turn
 
-		@grid = h.displayframe	#do not forget to remove!!!
-
 		if $currentPlayer == "O"
 			@playerNo = "1's"
 		elsif $currentPlayer == "X"
 			@playerNo = "2's"
 		end
-
 
 		erb :play
 
@@ -220,10 +219,11 @@ end
 
 	post '/new_game' do
 
-		h.clearcolumns
+		$matrix = h.clearcolumns
 		$currentPlayer = h.setplayer1
 		$waitingPlayer = h.setplayer2
 		h.winner = ""
+		$occupied = ""
 
 		redirect '/play'
 	end
@@ -231,9 +231,8 @@ end
 	post '/move' do
 
 		column = params["move"].to_i
-		occupied = h.gravityChecker(column, $currentPlayer)
-		if occupied == true
-			$occupied = occupied
+		$occupied = h.gravityChecker(column, $currentPlayer)
+		if $occupied == true
 			redirect '/play'
 	    elsif h.winner == "1" || h.winner == "2"
 			$winner = h.winner
