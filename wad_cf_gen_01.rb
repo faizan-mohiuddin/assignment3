@@ -2,7 +2,7 @@
 # Ruby code file - All your code should be located between the comments provided.
 
 # Add any additional gems and global variables here
-# require 'sinatra'		# remove '#' character to run sinatra wen server
+ 	require 'sinatra'		# remove '#' character to run sinatra wen server
 
 # Main class module
 module CF_Game
@@ -133,6 +133,11 @@ module CF_Game
 				@output.puts()
 			end
 			@output.puts("#{rowdivider}")
+		end
+
+		# Returns a copy of the matrix
+		def getmatrix
+			return @matrix.clone
 		end
 
 		def gravityChecker(column, playerToken)			#Checks using a while loop to test if a point in the matrix is blank. If it is blank then that position is updated to the corresponding player token as well as checking if that move was the winning move. Otherweise if not its goes one row higher until its at row[0] after this it breaks the while loop and stops checking.
