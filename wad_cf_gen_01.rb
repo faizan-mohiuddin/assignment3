@@ -42,7 +42,7 @@ module CF_Game
 		end
 
 		def student_id										#Returns the student id.
-			"51880363 & 51874279"
+			"51880363 and 51874279"
 		end
 
 		def displaybegingame									#Output "Begin game." to the display.
@@ -135,7 +135,7 @@ module CF_Game
 			@output.puts("#{rowdivider}")
 		end
 
-		def gravityChecker(column, playerToken)
+		def gravityChecker(column, playerToken)			#Checks using a while loop to test if a point in the matrix is blank. If it is blank then that position is updated to the corresponding player token as well as checking if that move was the winning move. Otherweise if not its goes one row higher until its at row[0] after this it breaks the while loop and stops checking.
 			row = 5
 			column -= 1
 			occupied = true
@@ -175,6 +175,7 @@ module CF_Game
 					if count == 4
 						winnerFound = true
 					end
+
 				else
 					break
 				end
@@ -194,6 +195,7 @@ module CF_Game
 					if count == 4
 						winnerFound = true
 					end
+
 				else
 					break
 				end
@@ -216,6 +218,7 @@ module CF_Game
 					if count == 4
 						winnerFound = true
 					end
+
 				else
 					break
 				end
@@ -234,6 +237,7 @@ module CF_Game
 					if count == 4
 						winnerFound = true
 					end
+
 				else
 					break
 				end
@@ -241,6 +245,93 @@ module CF_Game
 			end
 			#End Vertical.
 
+			count = 1
+
+			#Start diagonal
+			#Check top left to bottom right.
+			downRow = row + 1
+			rightColumn = column + 1
+			while winnerFound == false
+
+				if downRow <= 5 && rightColumn <= 6 && @matrix[downRow][rightColumn] == playerToken
+
+					count += 1
+					downRow += 1
+					rightColumn += 1
+
+					if count == 4
+						winnerFound = true
+					end
+
+				else
+					break
+				end
+
+			end
+
+			#Check bottom right to top left.
+			upRow = row - 1
+			leftColumn = column - 1
+			while winnerFound == false
+
+				if upRow >= 0 && leftColumn >= 0 && @matrix[upRow][leftColumn] == playerToken
+
+					count += 1
+					upRow -= 1
+					leftColumn -= 1
+
+					if count == 4
+						winnerFound = true
+					end
+				else
+					break
+				end
+
+			end
+
+			count = 1
+
+			#Check top right to bottom left
+			downRow = row + 1
+			leftColumn = column - 1
+			while winnerFound == false
+
+				if downRow <= 5 && leftColumn >= 0 && @matrix[downRow][leftColumn] == playerToken
+
+					count += 1
+					downRow += 1
+					leftColumn -= 1
+
+					if count == 4
+						winnerFound = true
+					end
+				else
+					break
+				end
+
+			end
+
+			#Check bottom left to top right
+			upRow = row - 1
+			rightColumn = column + 1
+			while winnerFound == false
+
+				if upRow >= 0 && rightColumn <= 6 && @matrix[upRow][rightColumn] == playerToken
+
+					count += 1
+					upRow -= 1
+					rightColumn += 1
+
+					if count == 4
+						winnerFound = true
+					end
+				else
+					break
+				end
+
+			end
+
+			#If there is a winner change the playerToken to the corresponding player (1 or 2).
 			if winnerFound == true
 				if playerToken == "O"
 					@winner = "1"
