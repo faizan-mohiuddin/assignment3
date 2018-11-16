@@ -66,6 +66,14 @@ module CF_Game
 					g.displaybegingame
 					@output.puts("")
 
+				elsif turn == 42
+
+					@output.puts("The match has ended in a draw.")
+					@output.puts("")
+					@output.puts("If you would like to play again then create a new game by entering 2.")
+					@output.puts("")
+					finished = true
+
 				end
 
 				while finished == false
@@ -97,7 +105,7 @@ module CF_Game
 
 							system "cls"
 
-							@output.puts("This column is fill please select a different column.")
+							@output.puts("This column is full please select a different column.")
 							@output.puts("")
 
 						elsif g.winner == "1" || g.winner == "2"
@@ -169,13 +177,85 @@ end
 
 	# Any code added to output the activity messages to a browser should be added below.
 
-get '/' do
-    erb :howtoplay
-end
+	h = CF_Game::Game.new(STDIN, STDOUT)
 
-get '/play' do
-    erb :play
-end
+	h.clearcolumns
+	$currentPlayer = h.setplayer1
+	$waitingPlayer = h.setplayer2
+	player1Color = "red"
+	player2Color = "blue"
+	$turn = 0
+
+	get '/' do
+
+		erb :howtoplay
+	end
+
+	get '/play' do
+
+		if h.winner == "1" || h.winner == "2"
+			@winner = h.winner
+			redirect '/winner'
+		end
+
+		@occupied = $occupied
+		@turn = $turn
+
+		@grid = h.displayframe	#do not forget to remove!!!
+
+		if $currentPlayer == "O"
+			@playerNo = "1's"
+		elsif $currentPlayer == "X"
+			@playerNo = "2's"
+		end
+
+
+		erb :play
+
+	end
+
+	post '/home' do
+		redirect '/'
+	end
+
+	post '/new_game' do
+
+		h.clearcolumns
+		$currentPlayer = h.setplayer1
+		$waitingPlayer = h.setplayer2
+		h.winner = ""
+
+		redirect '/play'
+	end
+
+	post '/move' do
+
+		column = params["move"].to_i
+		occupied = h.gravityChecker(column, $currentPlayer)
+		if occupied == true
+			$occupied = occupied
+			redirect '/play'
+	    elsif h.winner == "1" || h.winner == "2"
+			$winner = h.winner
+			redirect '/winner'
+		else
+
+			temp = $currentPlayer
+			$currentPlayer = $waitingPlayer
+			$waitingPlayer = temp
+			$turn += 1
+
+			redirect '/play'
+
+		end
+
+	end
+
+	get '/winner' do
+		@winner = $winner
+		erb :winner
+	end
+
 	# Any code added to output the activity messages to a browser should be added above.
 
 # End program
