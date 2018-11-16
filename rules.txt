@@ -1,0 +1,18 @@
+Game Rules
+
+1. There is a minimum and maximum of 2 Players needeed to play the game.
+2. The game frame is exactly 7 columns by 6 rows.
+3. Player 1 is always "O".
+4. Player 2 is always "X".
+5. Player 1 always starts the game.
+6. Players take turns placing tokens into the game frame from the top.
+7. In order to place a token the player first choeses which column they wish to insert a token. Once a column has been chosen the game will then find the next available space in that column starting from the bottom row. (This will fill the column from the bottom to the top of the column as more tokens are inserted in that column)
+8. Players can pause the game at any point.
+9. Within the menu (start or pause) the Player can exit the game.
+10. Within the menu (start or pause) the Player can reset the game.
+11. In order for a Player to win the game they need to connect 4 adjacent tokens (of their own type) in a straight line.
+12. The adjacent tokens can be in any orientation as long as it forms a straight line of 4 tokens (horizontal, vertical or diagonal).
+13. If a Player wins, then the game is finished and a message is displayed to show which Player won.
+14. If the game board is completely full, then the game is finished and a message is displayed to show the game has ended in a draw.
+15. Players will be notified if they have entered an invalid column and will be given another turn to chose a different column.
+16. Players will be notified if they have entered an invalid input and will be given another turn to input something different.
